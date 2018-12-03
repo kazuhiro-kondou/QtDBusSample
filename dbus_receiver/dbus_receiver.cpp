@@ -1,5 +1,6 @@
 #include "dbus_receiver.h"
 #include <QDebug>
+#include <QDBusVariant>
 
 DBusReceiver::DBusReceiver(const QString &pathName,
 						   const QString &objName,
@@ -41,19 +42,15 @@ void setupApi(){
 qPosition GetPosition(const qValuesToReturn &valuesToReturn){
     qDebug() << valuesToReturn;
     qPosition result;
-    QMap<int32_t,QPair<uint8_t,double>> map;
-    QPair<uint8_t,double> buff_1,buff_2;
-//    qPosition_pair buff_1,buff_2;
-//    buff_1.key=160;
-//    buff_1.value=35.5879;
-//    buff_2.key=161;
-//    buff_2.value=139.731;
-    buff_1.first=160;
-    buff_1.second=35.5879;
-    buff_2.first=161;
-    buff_2.second=139.731;
-    map.insert(160,buff_1);
-    map.insert(161,buff_2);
-    result.append(map);
+    qPositionMapElm resultMapElm;
+    qPositionPairElm Pair_1,Pair_2;
+
+    Pair_1.key = 160;
+    Pair_1.value = qvariant_cast<QDBusVariant>(35.5879);
+    Pair_2.key = 161;
+    Pair_2.value = qvariant_cast<QDBusVariant>(139.731);
+    resultMapElm.insert(160,Pair_1);
+    resultMapElm.insert(161,Pair_2);
+    result.append(resultMapElm);
     return result;
 }
