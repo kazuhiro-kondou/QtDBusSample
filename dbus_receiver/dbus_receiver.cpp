@@ -20,6 +20,8 @@ void DBusReceiver::setupDBus()
 //    qDBusRegisterMetaType<qPosition_pair>();
 
 //    qRegisterMetaType<qPosition>("qPosition");
+    qDBusRegisterMetaType<qPositionPairElm>();
+    qDBusRegisterMetaType<qPositionMapElm>();
     qDBusRegisterMetaType<qPosition>();
 
     qDBusRegisterMetaType<qValuesToReturn>();
@@ -39,7 +41,7 @@ void setupApi(){
 }
 
 // Method
-qPosition GetPosition(const qValuesToReturn &valuesToReturn){
+qPosition DBusReceiver::GetPosition(const qValuesToReturn &valuesToReturn){
     qDebug() << valuesToReturn;
     qPosition result;
     qPositionMapElm resultMapElm;

@@ -92,7 +92,7 @@ Q_DECLARE_METATYPE(qPosition)
 //    return argument;
 //}
 
-typedef QList<int32_t> qValuesToReturn;
+typedef QList<int> qValuesToReturn;
 Q_DECLARE_METATYPE(qValuesToReturn)
 
 #endif
