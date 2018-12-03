@@ -33,66 +33,10 @@ inline const QDBusArgument &operator >>(const QDBusArgument &argument, qPosition
     return argument;
 }
 
-//typedef QMap<int32_t,qPosition_pair> qPosition;
-typedef QMap<int32_t,qPositionPairElm> qPositionMapElm;
-Q_DECLARE_METATYPE(qPositionMapElm)
-
-//inline QDBusArgument &operator <<(QDBusArgument &argument, const qPositionMapElm &qpositionmapelm)
-//{
-//    argument.beginMap( QVariant::Int, qMetaTypeId<qPositionPairElm>() );
-//    for ( qPositionMapElm::Iterator i = qpositionmapelm.begin(); i != qpositionmapelm.end(); ++i ) {
-//        argument.beginMapEntry();
-//        argument << i.key() << i.value();
-//        argument.endMapEntry();
-//    }
-//    argument.endMap();
-//    return argument;
-//}
-
-//inline const QDBusArgument &operator >>(const QDBusArgument &argument, qPositionMapElm &qpositionmapelm)
-//{
-//    argument.beginMap();
-//    qpositionmapelm.clear();
-//    while ( !argument.atEnd() ) {
-//        int key;
-//        qPositionPairElm value;
-//        argument.beginMapEntry();
-//        argument >> key >> value;
-//        argument.endMapEntry();
-//        qpositionmapelm.insert(key,value);
-//    }
-//    argument.endMap();
-//    return argument;
-//}
-
-
-typedef QList<qPositionMapElm> qPosition;
+typedef QMap<int32_t,qPositionPairElm> qPosition;
 Q_DECLARE_METATYPE(qPosition)
 
-//inline QDBusArgument &operator <<(QDBusArgument &argument, const qPosition &qposition)
-//{
-//    argument.beginArray(qMetaTypeId<qPositionMapElm>);
-//    for (int i = 0;i < qposition.size(); ++i){
-//        argument << qposition[i];
-//    }
-//    argument.endArray();
-//    return argument;
-//}
-
-//inline const QDBusArgument &operator >>(const QDBusArgument &argument, qPosition &qposition)
-//{
-//    qposition.clear();
-//    argument.beginArray();
-//    while ( !argument.atEnd() ) {
-//        qPositionMapElm map;
-//        argument >> map;
-//        qposition.append(map);
-//    }
-//    argument.endArray();
-//    return argument;
-//}
-
-typedef QList<int> qValuesToReturn;
+typedef QList<int32_t> qValuesToReturn;
 Q_DECLARE_METATYPE(qValuesToReturn)
 
 #endif

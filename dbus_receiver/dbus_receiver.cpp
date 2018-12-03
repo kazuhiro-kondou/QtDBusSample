@@ -16,12 +16,7 @@ DBusReceiver::DBusReceiver(const QString &pathName,
 
 void DBusReceiver::setupDBus()
 {
-//    qRegisterMetaType<qPosition_pair>("qPosition_pair");
-//    qDBusRegisterMetaType<qPosition_pair>();
-
-//    qRegisterMetaType<qPosition>("qPosition");
     qDBusRegisterMetaType<qPositionPairElm>();
-    qDBusRegisterMetaType<qPositionMapElm>();
     qDBusRegisterMetaType<qPosition>();
 
     qDBusRegisterMetaType<qValuesToReturn>();
@@ -44,15 +39,13 @@ void setupApi(){
 qPosition DBusReceiver::GetPosition(const qValuesToReturn &valuesToReturn){
     qDebug() << valuesToReturn;
     qPosition result;
-    qPositionMapElm resultMapElm;
     qPositionPairElm Pair_1,Pair_2;
 
     Pair_1.key = 160;
-    Pair_1.value = qvariant_cast<QDBusVariant>(35.5879);
+    Pair_1.value = QDBusVariant(35.5879);
     Pair_2.key = 161;
-    Pair_2.value = qvariant_cast<QDBusVariant>(139.731);
-    resultMapElm.insert(160,Pair_1);
-    resultMapElm.insert(161,Pair_2);
-    result.append(resultMapElm);
+    Pair_2.value = QDBusVariant(139.731);
+    result.insert(160,Pair_1);
+    result.insert(161,Pair_2);
     return result;
 }

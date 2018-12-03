@@ -24,9 +24,8 @@ public:
 				 QWidget *parent = 0);
 
 public slots:
-//    QList<Position> GetPosition(const QList<int32_t> &valuesToReturn);
-//    QMap<int32_t,Position_pair> GetPosition(const QList<int32_t> &valuesToReturn);
     qPosition GetPosition(const qValuesToReturn &valuesToReturn);
+
 private:
 	void setupDBus();
     void setupApi();
